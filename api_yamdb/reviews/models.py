@@ -26,6 +26,7 @@ class Category(models.Model):
 
     class Meta:
         ordering = ('slug',)
+        verbose_name = 'Category'
 
 
 class Genre(models.Model):
@@ -37,6 +38,7 @@ class Genre(models.Model):
 
     class Meta:
         ordering = ('slug',)
+        verbose_name = 'Genre'
 
 
 class Title(models.Model):
@@ -68,6 +70,7 @@ class Title(models.Model):
 
     class Meta:
         ordering = ('name',)
+        verbose_name = 'Title'
 
 
 class Review(models.Model):
@@ -130,6 +133,7 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ('-pub_date',)
+        verbose_name = 'Comment'
 
 
 class TitleGenre(models.Model):

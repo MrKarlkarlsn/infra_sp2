@@ -1,5 +1,5 @@
 from django.contrib import admin
-from import_export.admin import ImportExportModelAdmin, ImportMixin
+from import_export.admin import ImportExportModelAdmin
 
 from .models import Title, Genre, Category
 from import_export import resources

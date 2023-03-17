@@ -5,7 +5,7 @@ from rest_framework.viewsets import GenericViewSet
 
 
 class CreateListDestroyMixin(CreateModelMixin, ListModelMixin,
-                    DestroyModelMixin, GenericViewSet):
+                             DestroyModelMixin, GenericViewSet):
     pass
 
 

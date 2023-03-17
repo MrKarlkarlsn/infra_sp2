@@ -2,6 +2,7 @@ from time import timezone
 
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from rest_framework import serializers
+
 from reviews.models import Genre, Category, Title, Review, Comment
 from users.models import User
 
@@ -123,11 +124,7 @@ class TitlesSerializer(serializers.ModelSerializer):
 
     def validate_year(self, value):
         year_today = timezone.date.today().year
-        if value > year_today:
-            raise serializers.ValidationError(
-                "Год создания произведения указан неверно!"
-            )
-        elif value < (year_today - 200):
+        if (year_today - 200) > value > year_today:
             raise serializers.ValidationError(
                 "Год создания произведения указан неверно!"
             )
@@ -141,11 +138,6 @@ class AuthSerializer(serializers.Serializer):
     )
 
     email = serializers.EmailField(max_length=254)
-
-    def validate_username(self, username):
-        if username.lower() == 'me':
-            raise serializers.ValidationError('Недопустимое имя пользователя.')
-        return username
 
     def validate_username(self, username):
         if username.lower() == 'me':

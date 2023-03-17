@@ -11,14 +11,16 @@ class User(AbstractUser):
         (MODERATOR, 'Модератор'),
         (ADMIN, 'Администратор'),
     )
-    email = models.EmailField('Почта пользователя', unique=True, max_length=254)
+    email = models.EmailField('Почта пользователя',
+                              unique=True,
+                              max_length=254)
     confirmation_code = models.CharField(
         'Токен подтверждения', max_length=50, blank=True
     )
     bio = models.TextField('Биография', blank=True)
     role = models.CharField(choices=ROLES,
                             default=USER,
-                            max_length=25,
+                            max_length=50,
                             blank=True)
 
     @property

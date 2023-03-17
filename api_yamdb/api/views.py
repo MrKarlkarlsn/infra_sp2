@@ -1,28 +1,28 @@
 from http import HTTPStatus
+
 from django.db import IntegrityError
 from django.contrib.auth.tokens import default_token_generator
 from django.db.models import Avg
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.pagination import LimitOffsetPagination
-from rest_framework.response import Response
-from rest_framework.decorators import api_view, permission_classes, action
 from django.shortcuts import get_object_or_404
 from django.core.mail import EmailMessage, send_mail
-from reviews.models import Genre, Category, Title, Review
-from users.models import User
-from rest_framework import permissions, status, viewsets, mixins, filters
-from rest_framework.decorators import action
+from rest_framework import permissions, status, viewsets, filters
+from rest_framework.decorators import action, api_view, permission_classes
 from rest_framework.filters import SearchFilter
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
+
+from reviews.models import Genre, Category, Title, Review
+from users.models import User
 from .serializers import (GetTokenSerializer, NotAdminSerializer,
                           ReviewSerializer, CommentSerializer,
                           UsersSerializer, GenreSerializer,
                           CategorySerializer, TitlePostSerializer,
                           TitlesSerializer, AuthSerializer)
 from .mixins import CreateListDestroyMixin
-
 from .filters import FilterTitle
 from .permissions import (AdminOnly,
                           IsAdminUserOrReadOnly,
@@ -38,8 +38,6 @@ class UsersViewSet(viewsets.ModelViewSet):
     filter_backends = (SearchFilter,)
     search_fields = ('username',)
     http_method_names = ['get', 'post', 'patch', 'delete']
-
-
 
     @action(
         methods=['GET', 'PATCH'],
@@ -173,7 +171,7 @@ class TitleViewSet(viewsets.ModelViewSet):
     pagination_class = LimitOffsetPagination
 
     def get_serializer_class(self):
-        if self.action in ("retrieve", "list"):
+        if self.action in ('retrieve', 'list'):
             return TitlesSerializer
         return TitlePostSerializer
 
