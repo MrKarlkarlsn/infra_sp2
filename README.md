@@ -17,8 +17,11 @@
 
 # Запуск проекта
 
-### Docker-compose
-
+### Подготовка к запуску
+- Скопируйте проект к себе
+```
+git clone 
+```
 - Создайте файл .env расположив его по пути ifra/.env
 - Заполните файл .env по форме:
 ``` bash
@@ -29,7 +32,41 @@ POSTGRES_PASSWORD= <..> # пароль для подключения к БД
 DB_HOST= <..> # название сервиса (контейнера)
 DB_PORT= <..> # порт для подключения к БД 
 ```
-### Запуск
+### Запуск проекта в DEV режиме
+
+Cоздать и активировать виртуальное окружение:
+
+```
+python3 -m venv venv
+```
+
+```
+source venv/bin/activate
+```
+
+Установить зависимости из файла requirements.txt:
+
+```
+python3 -m pip install --upgrade pip
+```
+
+```
+pip install -r requirements.txt
+```
+
+Выполнить миграции:
+
+```
+python3 manage.py migrate
+```
+
+Запустить проект:
+
+```
+python3 manage.py runserver
+```
+
+### Запуск проекта Docker-compose
 
 - Переходим в папку с docker-compose:
 ```bash
