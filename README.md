@@ -25,7 +25,6 @@ git clone https://github.com/MrKarlkarlsn/infra_sp2.git
 - Создайте файл .env расположив его по пути ifra/.env
 - Заполните файл .env по форме:
 ``` bash
-DB_ENGINE=django.db.backends.postgresql # указываем, что работаем с postgresql
 DB_NAME= <..> # имя базы данных
 POSTGRES_USER= <..> # логин для подключения к базе данных
 POSTGRES_PASSWORD= <..> # пароль для подключения к БД
