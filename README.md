@@ -29,7 +29,7 @@ DB_PORT= <..> # порт для подключения к БД
 
 - Переходим в папку с docker-compose:
 ```bash
-cd infa
+cd infra
 ```
 - Запустите контейнер:
 ```bash
