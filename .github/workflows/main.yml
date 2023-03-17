@@ -1,3 +1,4 @@
+# .github/workflows/**main.yml**
 name: Django-app workflow
 
 on: [push]
@@ -14,7 +15,7 @@ jobs:
     - name: Set up Python
       # Запуск actions setup-python — готового скрипта 
       # для развёртывания окружения Python
-    - uses: actions/setup-python@v4
+      uses: actions/setup-python@v2
       with:
         # Выбор версии Python
         python-version: 3.7
@@ -31,4 +32,4 @@ jobs:
     - name: Test with flake8 and django tests
       run: |
         # запуск проверки проекта по flake8
-        python -m flake8 
+        python -m flake8
